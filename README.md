@@ -36,6 +36,7 @@ steps to a shared one with a double-colon rule (`check::`); the variables a modu
 | `package_name`, `package_slug` | Importable package under `src/` (the slug must be a valid identifier) |
 | `initial_version` | Written to `VERSION`, `pyproject.toml` and `CHANGELOG.rst` |
 | `python_version` | Minimum Python version, the Python of your Maya (3.11 for Maya 2026) |
+| `pin_python_version` | Add a `.python-version` file with that version, so `uv` builds the virtual environment with it |
 | `author`, `author_email`, `github_user` | `pyproject.toml`, `LICENSE`, README badges and links |
 | `github_workflow` | Include the GitHub Actions workflows from `sowwic/gh-workflows` |
 | `release_branch`, `develop_branch` | Used by CI, docs deploy and `make release` |

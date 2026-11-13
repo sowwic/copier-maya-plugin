@@ -120,6 +120,14 @@ def test_dependabot_follows_the_workflows_and_the_develop_branch(tmp_path):
     assert ".github/dependabot.yml" not in files(without)
 
 
+def test_python_version_pin_is_optional(tmp_path):
+    pinned = generate(tmp_path / "a", python_version="3.10")
+    unpinned = generate(tmp_path / "b", pin_python_version=False)
+
+    assert (pinned / ".python-version").read_text().strip() == "3.10"
+    assert ".python-version" not in files(unpinned)
+
+
 @pytest.mark.parametrize(
     "ide, present", [("nvim", ".nvim.lua"), ("vscode", ".vscode/settings.json")]
 )
