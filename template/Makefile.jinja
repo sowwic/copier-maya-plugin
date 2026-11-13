@@ -11,7 +11,7 @@ BUILD_PREREQS = qrc
 
 MAKEFILES_REF ?= v1
 MAKEFILES_URL ?= https://raw.githubusercontent.com/sowwic/makefiles/$(MAKEFILES_REF)
-MAKEFILES_MODULES = general/python dcc/maya{% if use_qt %} general/qt{% endif %}
+MAKEFILES_MODULES = general/python general/repo dcc/maya{% if use_qt %} general/qt{% endif %}
 
 .make/%.mk:
 	@mkdir -p $(dir $@)

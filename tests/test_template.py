@@ -168,7 +168,7 @@ def test_maya_makefile_includes_the_maya_module(tmp_path):
     project = generate(tmp_path)
     makefile = (project / "Makefile").read_text()
 
-    assert makefile_modules(project) == ["general/python", "dcc/maya"]
+    assert makefile_modules(project) == ["general/python", "general/repo", "dcc/maya"]
     assert "PYTEST_CMD = ./mayapy_test.sh\n" in makefile, (
         "the script runs the tests itself"
     )
@@ -193,13 +193,13 @@ def test_qt_resources_are_optional(tmp_path):
 
     check_well_formed(qt)
     assert not any("resources" in name for name in files(plain))
-    assert makefile_modules(plain) == ["general/python", "dcc/maya"]
+    assert makefile_modules(plain) == ["general/python", "general/repo", "dcc/maya"]
     assert "BUILD_PREREQS" not in (plain / "Makefile").read_text()
     assert {
         "src/demo_pkg/resources/resources.qrc",
         "src/demo_pkg/resources/icons/home.png",
     } <= files(qt)
-    assert makefile_modules(qt) == ["general/python", "dcc/maya", "general/qt"]
+    assert makefile_modules(qt) == ["general/python", "general/repo", "dcc/maya", "general/qt"]
     assert "BUILD_PREREQS = qrc" in (qt / "Makefile").read_text()
 
 
